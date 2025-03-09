@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استبيان الألعاب التعليمية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Style spécifique pour Enactus */
+        .enactus-logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .bg-enactus-yellow {
+            background-color: #F5A623; /* Jaune Enactus */
+        }
+        .text-enactus-black {
+            color: #4A4A4A; /* Noir Enactus */
+        }
+        .btn-enactus {
+            background-color: #F5A623;
+            color: white;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-enactus:hover {
+            background-color: #D88C1C;
+            transform: scale(1.05);
+        }
+        .btn-enactus:active {
+            background-color: #D88C1C;
+            transform: scale(1);
+        }
+        .input-focus {
+            border-color: #F5A623;
+            box-shadow: 0 0 5px rgba(245, 166, 35, 0.5);
+        }
+        .input-focus:focus {
+            outline: none;
+            border-color: #F5A623;
+            box-shadow: 0 0 8px rgba(245, 166, 35, 0.8);
+        }
+        .header-bg {
+            background-color: #F5A623;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .header-text {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .section-title {
+            color: #F5A623;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        .form-container {
+            background: linear-gradient(to right, #F5A623, #FFDD75);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Modification des couleurs des lignes */
+        .line-yellow {
+            background-color: #F5A623;
+        }
+        .line-lightyellow {
+            background-color: #FFDD75;
+        }
+        .line-darkyellow {
+            background-color: #D88C1C;
+        }
+        .line-border {
+            border: 2px solid #F5A623;
+        }
+        .line-border-light {
+            border: 2px solid #FFDD75;
+        }
+
+        /* Changer la couleur de fond du body en noir */
+        body {
+            background-color: #949984; /* Fond noir */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <!-- Container principal -->
+    <div class="form-container">
+        
+        <!-- Logo Enactus -->
+        <div class="text-center">
+            <img src="images/logo.png" alt="Enactus Logo" class="enactus-logo">
+        </div>
+        
+        <!-- Titre -->
+        <div class="header-bg mb-6">
+            <h2 class="header-text">استبيان الألعاب التعليمية للأطفال</h2>
+        </div>
+        
+        <!-- Formulaire -->
+        <form id="questionForm" class="space-y-4">
+            
+            <!-- Nom complet -->
+            <div class="line-border line-lightyellow p-4 rounded-lg">
+                <label for="fullName" class="block text-enactus-black">الاسم الكامل</label>
+                <input type="text" id="fullName" name="fullName" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus" placeholder="أدخل اسمك الكامل">
+            </div>
+
+            <!-- Email -->
+            <div class="line-border line-lightyellow p-4 rounded-lg">
+                <label for="email" class="block text-enactus-black">البريد الإلكتروني</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus" placeholder="أدخل بريدك الإلكتروني">
+            </div>
+
+            <!-- Jeu 1 -->
+            <div class="line-border line-lightyellow p-4 rounded-lg">
+                <h3 class="section-title">اللعبة 1: تعابير الوجه</h3>
+                <label class="block text-enactus-black">عجبتك اللعبة؟ نعم أم لا</label>
+                <div class="flex items-center mb-4">
+                    <label class="mr-4">
+                        <input type="radio" name="game1" value="yes" class="game1-radio" required> نعم
+                    </label>
+                    <label>
+                        <input type="radio" name="game1" value="no" class="game1-radio"> لا
+                    </label>
+                </div>
+
+                <!-- Champs conditionnels -->
+                <div id="game1-yes" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">إذا عجبتك، احكيلنا شنية حسيت تأثيرها على الصغير</label>
+                    <input type="text" id="q2" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+                <div id="game1-no" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">كان لا، شنية المشاكل الي تعرضلها الصغير</label>
+                    <input type="text" id="q3" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+            </div>
+
+            <!-- Jeu 2 -->
+            <div class="line-border line-lightyellow p-4 rounded-lg">
+                <h3 class="section-title">اللعبة 2: قواعد الحياة</h3>
+                <label class="block text-enactus-black">عجبتك اللعبة؟ نعم أم لا</label>
+                <div class="flex items-center mb-4">
+                    <label class="mr-4">
+                        <input type="radio" name="game2" value="yes" class="game2-radio" required> نعم
+                    </label>
+                    <label>
+                        <input type="radio" name="game2" value="no" class="game2-radio"> لا
+                    </label>
+                </div>
+
+                <!-- Champs conditionnels -->
+                <div id="game2-yes" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">إذا عجبتك، احكيلنا شنية حسيت تأثيرها على الصغير</label>
+                    <input type="text" id="q6" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+                <div id="game2-no" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">كان لا، شنية المشاكل الي تعرضلها الصغير</label>
+                    <input type="text" id="q7" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+            </div>
+
+            <!-- Jeu 3 -->
+            <div class="line-border line-lightyellow p-4 rounded-lg">
+                <h3 class="section-title">اللعبة 3: التركيب</h3>
+                <label class="block text-enactus-black">عجبتك اللعبة؟ نعم أم لا</label>
+                <div class="flex items-center mb-4">
+                    <label class="mr-4">
+                        <input type="radio" name="game3" value="yes" class="game3-radio" required> نعم
+                    </label>
+                    <label>
+                        <input type="radio" name="game3" value="no" class="game3-radio"> لا
+                    </label>
+                </div>
+
+                <!-- Champs conditionnels -->
+                <div id="game3-yes" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">إذا عجبتك، احكيلنا شنية حسيت تأثيرها على الصغير</label>
+                    <input type="text" id="q10" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+                <div id="game3-no" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">كان لا، شنية المشاكل الي تعرضلها الصغير</label>
+                    <input type="text" id="q11" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+            </div>
+
+            <!-- Jeu 4 -->
+            <div class="line-border line-lightyellow p-4 rounded-lg">
+                <h3 class="section-title">اللعبة 4: مراة المشاعر</h3>
+                <label class="block text-enactus-black">عجبتك اللعبة؟ نعم أم لا</label>
+                <div class="flex items-center mb-4">
+                    <label class="mr-4">
+                        <input type="radio" name="game4" value="yes" class="game4-radio" required> نعم
+                    </label>
+                    <label>
+                        <input type="radio" name="game4" value="no" class="game4-radio"> لا
+                    </label>
+                </div>
+
+                <!-- Champs conditionnels -->
+                <div id="game4-yes" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">إذا عجبتك، احكيلنا شنية حسيت تأثيرها على الصغير</label>
+                    <input type="text" id="q14" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+                <div id="game4-no" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">كان لا، شنية المشاكل الي تعرضلها الصغير</label>
+                    <input type="text" id="q15" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+            </div>
+
+            <!-- Jeu 5 -->
+            <div class="line-border line-lightyellow p-4 rounded-lg">
+                <h3 class="section-title">اللعبة 5: البطاقات التعليمية</h3>
+                <label class="block text-enactus-black">عجبتك اللعبة؟ نعم أم لا</label>
+                <div class="flex items-center mb-4">
+                    <label class="mr-4">
+                        <input type="radio" name="game5" value="yes" class="game5-radio" required> نعم
+                    </label>
+                    <label>
+                        <input type="radio" name="game5" value="no" class="game5-radio"> لا
+                    </label>
+                </div>
+
+                <!-- Champs conditionnels -->
+                <div id="game5-yes" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">إذا عجبتك، احكيلنا شنية حسيت تأثيرها على الصغير</label>
+                    <input type="text" id="q18" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+                <div id="game5-no" class="game-response hidden">
+                    <label class="block text-enactus-black mt-4">كان لا، شنية المشاكل الي تعرضلها الصغير</label>
+                    <input type="text" id="q19" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 input-focus">
+                </div>
+            </div>
+
+            <!-- Bouton d'envoi -->
+            <button type="submit" class="btn-enactus">إرسال الاستبيان</button>
+        </form>
+    </div>
+
+    <script>
+        // Fonction pour afficher/masquer les champs en fonction de la réponse aux boutons radio
+        document.querySelectorAll('.game1-radio').forEach(radio => {
+            radio.addEventListener('change', function() {
+                toggleGameResponse('game1');
+            });
+        });
+        document.querySelectorAll('.game2-radio').forEach(radio => {
+            radio.addEventListener('change', function() {
+                toggleGameResponse('game2');
+            });
+        });
+        document.querySelectorAll('.game3-radio').forEach(radio => {
+            radio.addEventListener('change', function() {
+                toggleGameResponse('game3');
+            });
+        });
+        document.querySelectorAll('.game4-radio').forEach(radio => {
+            radio.addEventListener('change', function() {
+                toggleGameResponse('game4');
+            });
+        });
+        document.querySelectorAll('.game5-radio').forEach(radio => {
+            radio.addEventListener('change', function() {
+                toggleGameResponse('game5');
+            });
+        });
+
+        // Fonction pour afficher/masquer les champs conditionnels
+        function toggleGameResponse(game) {
+            const gameYes = document.getElementById(`${game}-yes`);
+            const gameNo = document.getElementById(`${game}-no`);
+            const selectedOption = document.querySelector(`input[name="${game}"]:checked`);
+
+            if (selectedOption) {
+                if (selectedOption.value === "yes") {
+                    gameYes.classList.remove("hidden");
+                    gameNo.classList.add("hidden");
+                } else if (selectedOption.value === "no") {
+                    gameYes.classList.add("hidden");
+                    gameNo.classList.remove("hidden");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
